@@ -63,3 +63,8 @@ nav li a {
 nav li a:hover {
   color: #7477FF;
 }
+
+h1 {
+  font-family: 'IBM Plex Sans';
+  line-height: 1.5 !important;
+}
