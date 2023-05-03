@@ -1,0 +1,124 @@
+/* Header styles */
+
+/* Primary color */
+.bg-primary {
+    background: #1f685d;
+  }
+  
+  /* Text color */
+  .text-white {
+    color: #fff;
+  }
+  
+  /* Accent color */
+  .text-accent {
+    color: #61dafb;
+  }
+  
+  /* Container */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  
+  /* Button styles */
+  .btn {
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Button hover effect */
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Accent button */
+  .btn.bg-accent {
+    background-color: #61dafb;
+  }
+  
+  /* Accent button hover effect */
+  .btn.bg-accent:hover {
+    background-color: transparent;
+    border-color: #61dafb;
+    color: #61dafb;
+  }
+  
+  /* Header height */
+  .header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+  
+  /* Mobile navigation */
+  .mobile-nav {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9;
+  }
+  
+  /* Show mobile navigation */
+  .mobile-nav.show {
+    transform: translateX(0);
+  }
+  
+  /* Navigation list */
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  /* Navigation item */
+  .nav-item {
+    margin-right: 2rem;
+  }
+  
+  /* Navigation link */
+  .nav-link {
+    text-decoration: none;
+    color: #1f685d;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Navigation link hover effect */
+  .nav-link:hover {
+    color: #61dafb;
+  }
+  
+  /* Hamburger button */
+  .hamburger-btn {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.5rem;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Hamburger button hover effect */
+  .hamburger-btn:hover {
+    color: #61dafb;
+  }
+  

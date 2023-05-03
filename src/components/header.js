@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import './header.css';
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
@@ -7,66 +8,56 @@ const Header = () => {
   const handleToggle = () => setToggle(!toggle);
 
   return (
-    <header className="flex justify-between px-5 py-2 bg-primary text-white fixed w-full z-10">
-      <a
-        href="/"
-        className="logo text-2xl font-bold text-accent"
-      >
-        Brady Steele
-      </a>
-
-      {/* Desktop Nav */}
-      <nav className="hidden md:block">
-        <ul className="flex">
-          <li>
-            <a href="/#about">About</a>
-          </li>
-          <li>
-            <a href="/#projects">Projects</a>
-          </li>
-          <li>
-            <a href="/#contact">Contact</a>
-          </li>
-          <li>
-            <a
-              href="#resume -link"
-              target="_blank"
-              without
-              rel="noreferrer"
-            >
-              Resume
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      {/* Mobile Nav */}
+    <header className="fixed top-0 left-0 w-full z-50 bg-primary shadow-md">
+      <div className="container mx-auto px-6 py-3 md:py-4">
+        <div className="flex items-center justify-between">
+          <a href="/" className="text-2xl font-bold text-white hover:text-accent transition-colors duration-300">
+            Brady Steele
+          </a>
+          <button
+            className="block md:hidden text-white focus:outline-none focus:text-accent transition-colors duration-300"
+            onClick={handleToggle}
+          >
+            {!toggle ? <AiOutlineMenu size={30} /> : <AiOutlineClose size={30} />}
+          </button>
+          <nav className="hidden md:block">
+            <ul className="flex">
+              <li className="mx-3">
+                <a href="/#about" className="text-white hover:text-accent transition-colors duration-300">About</a>
+              </li>
+              <li className="mx-3">
+                <a href="/#projects" className="text-white hover:text-accent transition-colors duration-300">Projects</a>
+              </li>
+              <li className="mx-3">
+                <a href="/#contact" className="text-white hover:text-accent transition-colors duration-300">Contact</a>
+              </li>
+              <li className="mx-3">
+                <a href="/#resume" target="_blank" without rel="noreferrer" className="btn bg-accent text-white hover:bg-transparent hover:border-accent hover:text-accent transition-colors duration-300">Resume</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
       <nav
-        className={!toggle ? 'mobile-nav left-[-100%]' : 'mobile-nav left-0'}
+        className={`${
+          toggle ? 'flex' : 'hidden'
+        } flex-col md:hidden bg-primary`}
       >
         <ul className="flex flex-col">
-          <li>
-            <a href="/#about">About</a>
+          <li className="my-2">
+            <a href="/#about" className="text-white hover:text-accent transition-colors duration-300">About</a>
           </li>
-          <li>
-            <a href="/#projects">Projects</a>
+          <li className="my-2">
+            <a href="/#projects" className="text-white hover:text-accent transition-colors duration-300">Projects</a>
           </li>
-          <li>
-            <a href="/#contact">Contact</a>
+          <li className="my-2">
+            <a href="/#contact" className="text-white hover:text-accent transition-colors duration-300">Contact</a>
           </li>
-          <li>
-            <a href="/#resume">Resume</a>
+          <li className="my-2">
+            <a href="/#resume" target="_blank" without rel="noreferrer" className="btn bg-accent text-white hover:bg-transparent hover:border-accent hover:text-accent transition-colors duration-300">Resume</a>
           </li>
         </ul>
       </nav>
-
-      {/* Toggle button */}
-      <button
-        onClick={handleToggle}
-        className="block md:hidden"
-      >
-        {!toggle ? <AiOutlineMenu size={30} /> : <AiOutlineClose size={30} />}
-      </button>
     </header>
   );
 };
