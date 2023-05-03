@@ -2,10 +2,10 @@ import React from "react";
 import SelfImg from "../assets/self-img.svg";
 
 import {
-  AiOutlineTwitter,
   AiOutlineYoutube,
   AiOutlineGithub,
 } from "react-icons/ai";
+
 
 const Self = () => {
   return (
@@ -23,13 +23,6 @@ const Self = () => {
 
           <div className="flex py-5 ">
             <a
-              href="https://twitter.com/SteeleBrady"
-              className="pr-4 inline-block text-accent hover:text-white"
-            >
-              {" "}
-              <AiOutlineTwitter size={40} />{" "}
-            </a>
-            <a
               href="https://www.youtube.com/@arcade_matt"
               className="pr-4 inline-block text-accent hover:text-white"
             >
@@ -37,7 +30,7 @@ const Self = () => {
               <AiOutlineYoutube size={40} />{" "}
             </a>
             <a
-              href="https://github.com/BcSteele1228"
+              href="https://github.com/BradySteele"
               className="pr-4 inline-block text-accent hover:text-white"
             >
               {" "}
@@ -47,7 +40,7 @@ const Self = () => {
 
           <a
             href="/#projects"
-            className=" btn bg-accent  border-2 border-[#7477FF] text-white px-6 py-3 hover:bg-transparent"
+            className=" btn bg-accent  border-2 border-[] text-white px-6 py-3 hover:bg-transparent"
           >
             See Projects
           </a>

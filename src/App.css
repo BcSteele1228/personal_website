@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(4, 3, 3);
 }
 
 .App-link {
@@ -39,7 +39,7 @@
 
 /* color */
 .bg-primary {
-  background: #0F172A;
+  background: #1f685d;
 }
 
 .bg-secondery {
@@ -47,24 +47,33 @@
 }
 
 .bg-accent {
-  background: #7477FF;
+  background: #080811;
 }
 
 .text-accent {
-  color: #7477FF;
+  color: #070710;
 } 
+
 .mobile-nav {
   @apply block md:hidden fixed top-10 py-2 w-full h-full bg-gray-900 duration-500;
 } 
+
 nav li a {
   @apply px-4 py-5 text-lg;
 }
 
 nav li a:hover {
-  color: #7477FF;
+  color: #040409;
 }
 
 h1 {
   font-family: 'IBM Plex Sans';
   line-height: 1.5 !important;
+  color: #040408;
+}
+
+h2 {
+  font-family: 'IBM Plex Sans';
+  line-height: 1.5 !important;
+  color: #040408;
 }
