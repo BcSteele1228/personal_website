@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { AiOutlineGithub } from "react-icons/ai";
 import { useSpring, animated } from "react-spring";
+import "./projects.css";
+import "intersection-observer";
 
 const Projects = () => {
   const projects = [
@@ -18,39 +20,65 @@ const Projects = () => {
     },
   ];
 
-  const cardAnimation = useSpring({
-    to: { opacity: 1, transform: "translateY(0)" },
-    from: { opacity: 0, transform: "translateY(50px)" },
-    delay: 500,
+  const [isVisible, setIsVisible] = useState(false);
+
+  const observer = useRef(null);
+
+  useEffect(() => {
+    observer.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          } else {
+            setIsVisible(false);
+          }
+        });
+      },
+      { threshold: 0.75 }
+    );
+    const elements = document.querySelectorAll(".project-card");
+    elements.forEach((element) => {
+      observer.current.observe(element);
+    });
+    return () => observer.current.disconnect();
+  }, []);
+
+  const fadeInUp = useSpring({
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? "translateY(0)" : "translateY(50px)",
+    config: {
+      duration: 2500,
+    },
   });
 
   return (
-    <section className="px-5 py-32 lg:py-48 bg-blue-50">
+    <section className="px-5 py-32 lg:py-48 bg-gray-200">
       <div className="container mx-auto">
         <div className="text-center mb-8">
-          <h2 className="text-4xl lg:text-6xl font-bold leading-tight border-b-4 border-blue-400 pb-2">
+          <h2 className="text-4xl lg:text-6xl font-bold leading-tight border-b-4 border-gray-800 pb-2">
             Projects
           </h2>
         </div>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
             <animated.div
-              className="rounded-md shadow-xl overflow-hidden bg-blue-900 hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 ease-out"
-              style={cardAnimation}
+              className={`project-card rounded-md shadow-xl overflow-hidden bg-gray-900 hover:shadow-2xl transform hover:-translate-y-1 transition-all ease-out`}
+              style={fadeInUp}
               key={i}
             >
               <div className="px-6 py-8">
                 <div className="mb-4">
-                  <h3 className="text-xl lg:text-2xl font-bold leading-tight text-blue-100">
+                  <h3 className="text-xl lg:text-2xl font-bold leading-tight text-gray-100">
                     {project.title}
                   </h3>
                 </div>
-                <p className="text-blue-100">{project.desc}</p>
+                <p className="text-gray-100">{project.desc}</p>
               </div>
               <div className="px-6 pt-4 pb-8 flex justify-center">
                 <a
                   href={project.code}
-                  className="text-blue-100 hover:text-blue-200"
+                  className="text-gray-100 hover:text-gray-200"
                 >
                   <AiOutlineGithub size={24} />
                 </a>

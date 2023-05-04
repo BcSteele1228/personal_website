@@ -158,3 +158,9 @@ header nav .btn:hover {
     margin: auto;
   }
 }
+
+.logo {
+    width: 100px;
+    height: auto;
+    left: -20;
+}
