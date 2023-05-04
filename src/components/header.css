@@ -1,124 +1,160 @@
-/* Header styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Primary color */
-.bg-primary {
-    background: #1f685d;
+/* Custom styles */
+@layer utilities {
+  .bg-primary {
+    background-color: #1c2531;
   }
-  
-  /* Text color */
-  .text-white {
-    color: #fff;
-  }
-  
-  /* Accent color */
+
   .text-accent {
-    color: #61dafb;
+    color: #5edfff;
   }
-  
-  /* Container */
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-  }
-  
-  /* Button styles */
+
   .btn {
-    font-size: 1.125rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    border-radius: 0.25rem;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  /* Button hover effect */
-  .btn:hover {
-    transform: translateY(-2px);
-  }
-  
-  /* Accent button */
-  .btn.bg-accent {
-    background-color: #61dafb;
-  }
-  
-  /* Accent button hover effect */
-  .btn.bg-accent:hover {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 4px;
     background-color: transparent;
-    border-color: #61dafb;
-    color: #61dafb;
+    border: 2px solid #5edfff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
   }
-  
-  /* Header height */
-  .header {
-    height: 80px;
+
+  .btn:hover {
+    background-color: #5edfff;
+    color: #1c2531;
+  }
+}
+
+/* Header styles */
+header {
+  height: 4rem;
+}
+
+header a {
+  font-family: 'Montserrat', sans-serif;
+}
+
+header .container {
+  height: 100%;
+}
+
+header .flex {
+  height: 100%;
+}
+
+header .flex a:hover {
+  color: #5edfff;
+  transform: scale(1.05);
+}
+
+header .flex button {
+  margin-left: auto;
+}
+
+header nav ul {
+  list-style: none;
+}
+
+header nav ul li {
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+header nav ul li a {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+}
+
+header nav ul li a:hover {
+  color: #5edfff;
+  transform: translateY(1px);
+}
+
+header nav .btn {
+  margin-left: 1rem;
+}
+
+header nav .btn:hover {
+  background-color: transparent;
+  border-color: #5edfff;
+  color: #5edfff;
+}
+
+@media (max-width: 768px) {
+  header {
+    height: auto;
+  }
+
+  header nav {
+    display: none;
+  }
+
+  header nav ul {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    position: fixed;
-    top: 0;
+    margin-top: 1rem;
+  }
+
+  header nav ul li {
+    margin: 0;
+  }
+
+  header nav ul li a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    margin: 0.5rem 0;
+    display: block;
+  }
+
+  header .flex button {
+    display: block;
+  }
+
+  header .flex button svg {
+    margin: auto;
+  }
+
+  header .hidden {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 4rem;
     left: 0;
-    right: 0;
+    padding: 1rem;
+    background-color: #1c2531;
     z-index: 10;
   }
-  
-  /* Mobile navigation */
-  .mobile-nav {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #fff;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 9;
+
+  header .hidden li {
+    margin: 0.5rem 0;
   }
-  
-  /* Show mobile navigation */
-  .mobile-nav.show {
-    transform: translateX(0);
-  }
-  
-  /* Navigation list */
-  .nav-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  /* Navigation item */
-  .nav-item {
-    margin-right: 2rem;
-  }
-  
-  /* Navigation link */
-  .nav-link {
-    text-decoration: none;
-    color: #1f685d;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  /* Navigation link hover effect */
-  .nav-link:hover {
-    color: #61dafb;
-  }
-  
-  /* Hamburger button */
-  .hamburger-btn {
+
+  header .hidden a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
     display: block;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    font-size: 1.5rem;
-    color: #fff;
-    transition: all 0.3s ease-in-out;
   }
-  
-  /* Hamburger button hover effect */
-  .hamburger-btn:hover {
-    color: #61dafb;
+
+  header .hidden button {
+    display: block;
+    margin-left: auto;
   }
-  
+
+  header .hidden button svg {
+    margin: auto;
+  }
+}
