@@ -1,14 +1,29 @@
 import React from "react";
 import { useSpring, useTrail, animated } from "react-spring";
-import { AiOutlineYoutube, AiOutlineGithub } from "react-icons/ai";
+import { AiOutlineGithub } from "react-icons/ai";
 import "./self.css";
-import MyLogo from "../assets/BS.svg";
+import MyInfo from "../assets/Info.svg";
+import { TypeAnimation } from 'react-type-animation';
 
 const Self = () => {
   const infoAnimation = useSpring({
     to: { opacity: 1, transform: "translateY(0)" },
     from: { opacity: 0, transform: "translateY(50px)" },
     delay: 500,
+    config: { duration: 2000 }
+  });
+
+  const githubAnimation = useSpring({
+    to: { opacity: 1, transform: "translateX(0)" },
+    from: { opacity: 0, transform: "translateX(-50px)" },
+    delay: 1000,
+    config: { duration: 2000 }
+  });
+
+  const seeProjects = useSpring({
+    to: { opacity: 1, transform: "translateX(0)" },
+    from: { opacity: 0, transform: "translateX(50px)" },
+    delay: 1000,
     config: { duration: 2000 }
   });
 
@@ -26,7 +41,7 @@ const Self = () => {
     to: { opacity: 1, transform: "translateY(0)" },
     from: { opacity: 0, transform: "translateY(0)" },
     delay: 0,
-    config: { duration: 65, }
+    config: { duration: 65 }
   });
 
   return (
@@ -34,30 +49,24 @@ const Self = () => {
       <div className="container mx-auto lg:flex items-center justify-between">
         <animated.div style={infoAnimation} className="lg:w-1/2">
           <h1 className="text-3xl lg:text-6xl font-bold leading-tight mb-6">
-            <img src={MyLogo} alt="Brady Steele" />
+            <img src={MyInfo} alt="Brady Steele" />
           </h1>
-
-          <div className="flex mb-8">
-            <a
-              href="https://www.youtube.com/@arcade_matt"
-              className="pr-4 inline-block text-gray-700 hover:text-gray-800"
-            >
-              <AiOutlineYoutube size={24} />
-            </a>
+          <animated.div style={githubAnimation} className="flex mb-8">
             <a
               href="https://github.com/BradySteele"
               className="pr-4 inline-block text-gray-700 hover:text-gray-800"
             >
-              <AiOutlineGithub size={24} />
+              <AiOutlineGithub size={48} />
             </a>
-          </div>
-
+          </animated.div>
+          <animated.div style={seeProjects} classname="flex mb0-">
           <a
             href="/#projects"
             className="btn bg-gray-700 text-white px-6 py-3 hover:bg-white hover:text-gray-700 border-2 border-gray-700"
           >
             See Projects
           </a>
+          </animated.div>
         </animated.div>
 
         <div className="lg:w-1/2">

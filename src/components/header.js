@@ -42,8 +42,7 @@ const Header = () => {
       <nav
         className={`${
           toggle ? 'flex' : 'hidden'
-        } flex-col md:hidden bg-gray-900`}
-      >
+        } flex-col md:hidden bg-gray-900`}>
         <ul className="flex flex-col">
           <li className="my-2">
             <a href="/#about" className="transition-colors duration-300 transform hover:translate-y-1 hover:text-gray-300">About</a>

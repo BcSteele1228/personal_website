@@ -65,12 +65,6 @@
     margin-top: 2.5rem;
   }
   
-  .self-img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
   @media (min-width: 768px) {
     .hero-info {
       margin-right: 4rem;
