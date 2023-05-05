@@ -1,0 +1,55 @@
+.TerminalWrapper {
+    background-color: #1E1E1E;
+    color: #F8F8F8;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+    line-height: 1.4;
+    height: 400px;
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .TerminalBody {
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  .TerminalLine {
+    margin-bottom: 10px;
+  }
+  
+  .TerminalTitle {
+    background-color: #252525;
+    color: #F8F8F8;
+    font-size: 20px;
+    padding: 12px 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .TerminalTitle svg {
+    fill: #F8F8F8;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .TerminalTitle h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  
+  .TerminalPrompt {
+    color: #14e405;
+  }
+  

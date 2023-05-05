@@ -4,6 +4,8 @@ import { AiOutlineGithub } from "react-icons/ai";
 import "./self.css";
 import MyInfo from "../assets/Info.svg";
 import { TypeAnimation } from 'react-type-animation';
+import Terminal from "./terminal";
+import './terminal.css';
 
 const Self = () => {
   const infoAnimation = useSpring({
@@ -61,7 +63,9 @@ const Self = () => {
         </animated.div>
   
         <div className="lg:w-1/2">
-          <h2 className="text-3xl lg:text-6xl font-bold leading-tight mb-6">
+          <Terminal/>
+        </div>
+          {/* <h2 className="text-3xl lg:text-6xl font-bold leading-tight mb-6">
             {aboutTrail.map((props, index) => (
               <animated.span key={index} style={props}>
                 {about[index]}
@@ -77,10 +81,9 @@ const Self = () => {
                 speed={60}
                 sequence={[
                   1000,
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                  "I operate as a member of the Telecommunications, Media, and Entertainment squad in the IBM Industry Engineering Lab with a focus in the application of artificial intelligence, edge computing, and IoT, to networking and Industry 4.0 robotics."
                 ]}
-              />
-        </div>
+              /> */}
       </div>
     </section>
   );
