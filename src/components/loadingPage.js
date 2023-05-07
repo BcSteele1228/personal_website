@@ -15,7 +15,7 @@ function LoadingPage() {
     let progress = 0;
 
     const updateProgress = () => {
-      progress += 0.01;
+      progress += 0.006;
       setProgress(progress);
 
       if (progress >= 1) {

@@ -8,28 +8,44 @@ import Cube from './components/cube';
 import ThreeScene from './components/threeScene';
 import { Canvas } from '@react-three/fiber';
 import LoadingPage from './components/loadingPage';
+import Transition from './components/transition';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  const handleLoadingComplete = () => {
+    setIsTransitioning(true);
+  };
+
+  const handleTransitionComplete = () => {
+    setIsTransitioning(false);
+  };
 
   useEffect(() => {
     // Simulate loading time
     setTimeout(() => {
       setIsLoading(false);
-    }, 4000);
+    }, 6500);
   }, []);
 
   return (
     <>
       {isLoading ? (
-        <LoadingPage />
+        <LoadingPage onComplete={handleLoadingComplete} />
       ) : (
         <>
-          <Header />
-          <Self />
-          <Projects />
-          {/* <ThreeScene /> */}
-          {/* <Cube /> */}
+          {isTransitioning ? (
+            <Transition onComplete={handleTransitionComplete} />
+          ) : (
+            <>
+              <Header />
+              <Self />
+              <Projects />
+              {/* <ThreeScene /> */}
+              {/* <Cube /> */}
+            </>
+          )}
         </>
       )}
     </>
