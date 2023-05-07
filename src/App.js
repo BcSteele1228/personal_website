@@ -12,11 +12,11 @@ import { Canvas } from '@react-three/fiber';
 function App() {
   return (
     <>
-        {/* <Header /> */}
-        {/* <Self /> */}
-        {/* <Projects /> */}
+        <Header />
+        <Self />
+        <Projects />
         {/* <ThreeScene /> */}
-        <Cube />
+        {/* <Cube /> */}
     </>
   );
 }

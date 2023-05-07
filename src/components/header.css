@@ -164,3 +164,9 @@ header nav .btn:hover {
     margin-top: 20px;
 }
 
+.cube-container {
+    display: flex;
+    align-items: center; /* vertically center the child elements */
+    height: 100%; /* set the height to match the parent container */
+  }
+  

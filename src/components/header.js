@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import './header.css';
-import Logo from "../assets/Logo.svg";
+import Cube from './cube';
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
@@ -11,9 +11,11 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-gray-900 text-gray-200 shadow-lg rounded-b-lg overflow-hidden">
       <div className="container mx-auto px-6 py-3 md:py-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-full">
           <a href="/" className="text-4xl font-bold hover:text-gray-300 transition-colors duration-300 transform hover:scale-105">
-            <img src={Logo} alt="Logo" className="logo" style={{ justifySelf: 'start' }} />
+            <div className="cube-container">
+              <Cube />
+            </div>
           </a>
           <button
             className="block md:hidden text-white focus:outline-none focus:text-gray-300 transition-colors duration-300"
