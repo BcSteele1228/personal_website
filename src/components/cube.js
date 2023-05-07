@@ -61,7 +61,7 @@ class Cube extends React.Component {
 
   render() {
     return (
-      <div style={{ width: '80px', height: '80px', position: 'absolute' }}>
+      <div style={{ width: '100px', height: '100px', position: 'absolute' }}>
         <Canvas>
           <ambientLight />
           <pointLight position={[10, 10, 10]} intensity={0.3} />
@@ -74,7 +74,7 @@ class Cube extends React.Component {
           />
           <Box
             ref={this.meshRef}
-            scale={[8, 8, 8]}
+            scale={[7, 7, 7]}
             position={[0, 0, 0]} // center the box
           >
             <meshStandardMaterial
