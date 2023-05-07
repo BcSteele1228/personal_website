@@ -4,6 +4,8 @@ import Header from './components/header';
 import Self from './components/self';
 import Projects from './components/projects';
 import Terminal from './components/terminal';
+import Cube from './components/cube';
+import ThreeScene from './components/threeScene';
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
       <Header />
       <Self />
       <Projects />
+      {/* <ThreeScene /> */}
+      <Cube />
     </>
   );
 }

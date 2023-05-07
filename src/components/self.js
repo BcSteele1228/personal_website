@@ -38,7 +38,7 @@ const Self = () => {
   });
 
   return (
-    <section className="px-5 py-20 lg:py-32 bg-gray-200 text-gray-900">
+    <section className="px-5 py-20 lg:py-32 bg-gray-300 text-gray-900">
       <div className="container mx-auto lg:flex items-center justify-between">
         <animated.div style={infoAnimation} className="lg:w-1/2">
           <h1 className="text-3xl lg:text-6xl font-bold leading-tight mb-6">
@@ -47,7 +47,7 @@ const Self = () => {
           <animated.div style={githubAnimation} className="flex mb-8">
             <a
               href="https://github.com/BradySteele"
-              className="pr-4 inline-block text-gray-700 hover:text-gray-800"
+              className="pr-4 inline-block text-gray-900 hover:text-black"
             >
               <AiOutlineGithub size={48} />
             </a>
@@ -55,7 +55,7 @@ const Self = () => {
           <animated.div style={seeProjects} className="flex mb0-">
             <a
               href="/#projects"
-              className="btn bg-gray-700 text-white px-6 py-3 hover:bg-white hover:text-gray-700 border-2 border-gray-700"
+              className="btn bg-gray-900 text-white px-6 py-3 hover:bg-black hover:text-gray-200 border-2 border-gray-200"
             >
               See Projects
             </a>

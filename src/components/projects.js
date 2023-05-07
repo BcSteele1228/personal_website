@@ -53,10 +53,10 @@ const Projects = () => {
   });
 
   return (
-    <section className="px-5 py-32 lg:py-48 bg-gray-200">
+    <section className="px-5 py-32 lg:py-48 bg-gray-300">
       <div className="container mx-auto">
         <div className="text-center mb-8">
-          <h2 className="text-4xl lg:text-6xl font-bold leading-tight border-b-4 border-gray-800 pb-2">
+          <h2 className="text-4xl lg:text-6xl font-bold leading-tight border-b-4 border-gray-900 pb-2">
             Projects
           </h2>
         </div>
