@@ -16,7 +16,7 @@ function Transition({ onComplete }) {
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     const starsGeometry = new THREE.BufferGeometry();
-    const starCount = 10000;
+    const starCount = 15000;
 
     const starPositions = new Float32Array(starCount * 3);
     const starColors = new Float32Array(starCount * 3);
