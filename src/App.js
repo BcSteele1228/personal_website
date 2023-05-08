@@ -5,7 +5,6 @@ import Self from './components/self';
 import Projects from './components/projects';
 import Terminal from './components/terminal';
 import Cube from './components/cube';
-import ThreeScene from './components/threeScene';
 import { Canvas } from '@react-three/fiber';
 import LoadingPage from './components/loadingPage';
 import Transition from './components/transition';

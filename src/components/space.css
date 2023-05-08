@@ -7,4 +7,26 @@
     background-color: #000;
   }
   
+  .words {
+    background-image: url('../assets/cockpit.png');
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    -webkit-mask-image: url('../assets/cockpit.png');
+    mask-image: url('../assets/cockpit.png');
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-position: center center;
+    mask-position: center center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+  
+  
+  
   
