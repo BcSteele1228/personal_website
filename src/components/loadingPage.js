@@ -109,7 +109,7 @@ function LoadingPage() {
         {loading ? (
           <div className="flex flex-col justify-center items-center w-full h-full">
             <img src={characterImage} alt="Character" className="h-64 animate-bounce" />
-            <p className="text-lg mt-4" style={{ color: "white" }}>Loading...</p>
+            <p className="text-lg mt-4" style={{ color: "white" }}>Loading Brady's Portfolio...</p>
             <div className="w-1/2 h-2 bg-gray-200 mt-4 rounded-full">
               <div className="h-2 bg-pink-400 rounded-full" style={{ width: `${progress * 100}%` }}></div>
             </div>
