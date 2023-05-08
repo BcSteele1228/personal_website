@@ -13,11 +13,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-/* Global styles */
-.bg-primary {
-  background-color: #1a202c;
-}
-
 .text-white {
   color: #fff;
 }

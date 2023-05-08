@@ -33,7 +33,7 @@ function Transition({ onComplete }) {
       starPositions[i * 3 + 2] = z;
 
       const color = new THREE.Color();
-      color.setHSL(Math.random(), 1.0, 0.5);
+      color.setHSL(Math.random(), 1.0, 1.0); // Changed to white
 
       starColors[i * 3] = color.r;
       starColors[i * 3 + 1] = color.g;
@@ -60,9 +60,17 @@ function Transition({ onComplete }) {
       if (camera.position.z > -3000) {
         camera.position.z -= 15;
       } else {
-        onComplete();
+        renderer.setAnimationLoop(null); // Stop the animation loop
+        const fadeOut = setInterval(() => {
+          if (camera.position.z > -5000) {
+            camera.position.z -= 10;
+            renderer.render(scene, camera);
+          } else {
+            clearInterval(fadeOut); // Stop the fade out
+            onComplete();
+          }
+        }, 16); // Run the fade out effect at 60fps
       }
-
       renderer.render(scene, camera);
     };
 

@@ -9,6 +9,7 @@ import ThreeScene from './components/threeScene';
 import { Canvas } from '@react-three/fiber';
 import LoadingPage from './components/loadingPage';
 import Transition from './components/transition';
+import Space from './components/space';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,9 +40,10 @@ function App() {
             <Transition onComplete={handleTransitionComplete} />
           ) : (
             <>
-              <Header />
+            <Space />
+              {/* <Header />
               <Self />
-              <Projects />
+              <Projects /> */}
               {/* <ThreeScene /> */}
               {/* <Cube /> */}
             </>
