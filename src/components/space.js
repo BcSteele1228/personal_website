@@ -10,7 +10,7 @@ const Space = () => {
         params={{
           particles: {
             number: {
-              value: 5000,
+              value: 7500,
               density: {
                 enable: true,
                 value_area: 8000,
@@ -47,7 +47,7 @@ const Space = () => {
             },
             move: {
               enable: true,
-              speed: 1,
+              speed: 0.08,
               direction: 'none',
               random: true,
               straight: false,
@@ -74,7 +74,7 @@ const Space = () => {
             },
             modes: {
               grab: {
-                distance: 200,
+                distance: 100,
                 line_linked: {
                   opacity: 0.5,
                 },
