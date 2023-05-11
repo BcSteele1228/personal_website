@@ -3,6 +3,7 @@ import Particles from 'react-tsparticles';
 import './space.css';
 import cockpitImage from '../assets/cockpit.png';
 import Earth from './earth';
+import Jupiter from './jupiter';
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber';
 
@@ -96,10 +97,16 @@ const Space = () => {
         {/* <h1>Brady Steele's Portfolio</h1> */}
       </div>
       <Canvas style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
-        <OrbitControls enablePan={false} enableZoom={false} />
+        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}/>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <Earth />
+      </Canvas>
+      <Canvas style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
+        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}/>
+        <ambientLight />
+        <pointLight position={[10, 10, 10]} />
+        <Jupiter />
       </Canvas>
     </div>
   );
