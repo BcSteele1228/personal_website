@@ -32,7 +32,7 @@ const Jupiter = () => {
       <ambientLight intensity={0.2} />
       <directionalLight color={new Color(0xffffff)} intensity={0} position={[5, 3, 5]} castShadow />
       {textureLoaded && (
-        <mesh ref={meshRef} rotation={[0, Math.PI, 0]} scale={new Vector3(1.4, 1.4, 1.4)}> {/* Adjust the scale here */}
+        <mesh ref={meshRef} rotation={[0, Math.PI, 0]} scale={new Vector3(1.4, 1.5, 1.4)}> {/* Adjust the scale here */}
           <sphereGeometry args={[1, 32, 32]} />
           <meshBasicMaterial map={textureDay.current} />
         </mesh>

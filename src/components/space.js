@@ -16,7 +16,7 @@ const Space = () => {
         params={{
           particles: {
             number: {
-              value: 7500,
+              value: 20000,
               density: {
                 enable: true,
                 value_area: 8000,
@@ -29,7 +29,7 @@ const Space = () => {
               type: 'circle',
             },
             opacity: {
-              value: 0.5,
+              value: 0.75,
               random: true,
               anim: {
                 enable: true,
@@ -53,7 +53,7 @@ const Space = () => {
             },
             move: {
               enable: true,
-              speed: 0.08,
+              speed: 0.05,
               direction: 'none',
               random: true,
               straight: false,
