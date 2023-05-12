@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Header from './components/header';
-import Self from './components/self';
-import Projects from './components/projects';
-import Terminal from './components/terminal';
-import Cube from './components/cube';
 import { Canvas } from '@react-three/fiber';
 import LoadingPage from './components/loadingPage';
 import Transition from './components/transition';
 import Space from './components/space';
+import RoutesExport from './components/space';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -40,11 +36,6 @@ function App() {
           ) : (
             <>
             <Space />
-              {/* <Header />
-              <Self />
-              <Projects /> */}
-              {/* <ThreeScene /> */}
-              {/* <Cube /> */}
             </>
           )}
         </>

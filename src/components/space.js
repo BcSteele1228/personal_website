@@ -26,7 +26,7 @@ const Space = () => {
         params={{
           particles: {
             number: {
-              value: 20000,
+              value: 10000,
               density: {
                 enable: true,
                 value_area: 8000,
