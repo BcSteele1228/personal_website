@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Particles from 'react-tsparticles';
 import './space.css';
 import cockpitImage from '../assets/cockpit.png';
@@ -10,6 +10,16 @@ import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber';
 
 const Space = () => {
+    const [currentPlanet, setCurrentPlanet] = useState(0);
+    const planets = [Earth, Jupiter, Mars, Mercury];
+
+    const handleNextPlanet = () => {
+        setCurrentPlanet((prevPlanet) => (prevPlanet === planets.length - 1 ? 0 : prevPlanet + 1));
+    };
+
+    const handlePreviousPlanet = () => {
+        setCurrentPlanet((prevPlanet) => (prevPlanet === 0 ? planets.length - 1 : prevPlanet - 1));
+    };
   return (
     <div className="space">
       <Particles
@@ -98,29 +108,19 @@ const Space = () => {
         <img src={cockpitImage} alt="Cockpit" style={{ objectFit: 'cover', height: '100%', width: '100%' }} />
       </div>
       <Canvas style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
-        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}/>
+        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false} />
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
-        <Earth />
+        {planets.map((Planet, index) => (
+          <group key={index} visible={index === currentPlanet}>
+            <Planet />
+          </group>
+        ))}
       </Canvas>
-      <Canvas style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
-        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}/>
-        <ambientLight />
-        <pointLight position={[10, 10, 10]} />
-        <Jupiter />
-      </Canvas>
-      <Canvas style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
-        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}/>
-        <ambientLight />
-        <pointLight position={[10, 10, 10]} />
-        <Mars />
-      </Canvas>
-      <Canvas style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
-        <OrbitControls enablePan={false} enableZoom={false} enableRotate={false}/>
-        <ambientLight />
-        <pointLight position={[10, 10, 10]} />
-        <Mercury />
-      </Canvas>
+      <div className="slider">
+        <button onClick={handlePreviousPlanet}>Previous</button>
+        <button onClick={handleNextPlanet}>Next</button>
+      </div>
     </div>
   );
 };

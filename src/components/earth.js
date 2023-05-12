@@ -28,11 +28,11 @@ const Earth = () => {
   });
 
   return (
-    <group position={[0, 1, 0]}>
+    <group position={[0, 0.85, 0]}>
       <ambientLight intensity={0.2} />
       <directionalLight color={new Color(0xffffff)} intensity={0} position={[5, 3, 5]} castShadow />
       {textureLoaded && (
-        <mesh ref={meshRef} rotation={[0, Math.PI, 0]} scale={new Vector3(1.2, 1.2, 1.2)}>
+        <mesh ref={meshRef} rotation={[0, Math.PI, 0]} scale={new Vector3(2, 2, 2)}>
           <sphereGeometry args={[1, 32, 32]} />
           <meshBasicMaterial map={textureDay.current} />
         </mesh>

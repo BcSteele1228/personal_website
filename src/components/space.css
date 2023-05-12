@@ -28,7 +28,23 @@
     pointer-events: none;
 }
 
+.slider {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   
+  .slider button {
+    margin: 0 10px;
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
   
-  
-  
+  .slider button:hover {
+    background-color: #f1f1f1;
+  }
