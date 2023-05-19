@@ -3,6 +3,8 @@ import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
+import Transition from './transition';
+import './loadingPage.css';
 
 import characterImage from '../assets/astronaut.png';
 
@@ -32,20 +34,25 @@ function Character({ speed }) {
 
   const texture = useLoader(TextureLoader, characterImage);
 
+  const aspectRatio = texture.image.width / texture.image.height;
+  const planeSize = 5;
+  const planeHeight = planeSize / aspectRatio;
+
   return (
     <group>
       <mesh ref={meshRef}>
-        <boxBufferGeometry args={[5, 5, 0.1]} />
+        <planeBufferGeometry args={[planeSize, planeHeight]} />
         <meshBasicMaterial map={texture} transparent />
       </mesh>
     </group>
   );
 }
 
-function LoadingPage() {
+function LoadingPage({ onComplete }) {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [particlesLoaded, setParticlesLoaded] = useState(false);
+  const [transitionStarted, setTransitionStarted] = useState(false);
 
   useEffect(() => {
     let interval;
@@ -75,6 +82,11 @@ function LoadingPage() {
   const onParticlesLoaded = useCallback(() => {
     setParticlesLoaded(true);
   }, []);
+
+  const handleTransitionStart = () => {
+    setTransitionStarted(true);
+    onComplete();
+  };
 
   const particleOptions = {
     background: {
@@ -143,16 +155,30 @@ function LoadingPage() {
       <div className="particles-container" style={{ display: particlesLoaded ? 'block' : 'none' }}>
         <Particles options={particleOptions} init={particlesInit} loaded={onParticlesLoaded} />
       </div>
-      {loading ? (
+      <div className="w-full h-full relative">
+        {!transitionStarted && !loading && (
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-4">
+            <button onClick={handleTransitionStart} className="start-button">
+              Start Transition
+            </button>
+          </div>
+        )}
+        {transitionStarted && <div><Transition /></div>}
+        <Canvas className={`w-full h-full ${transitionStarted ? 'hidden' : ''}`}>
+          <ambientLight />
+          <pointLight position={[10, 10, 10]} />
+          <group>
+            <mesh className={`animate-float motion-safe ${loading ? 'hidden' : ''}`}>
+              <Character speed={0.01} />
+            </mesh>
+          </group>
+        </Canvas>
+      </div>
+      {loading && (
         <div className="relative z-10 flex flex-col justify-center items-center w-full h-full">
           <Canvas className="w-full h-full">
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
-            <group>
-              <mesh className="animate-float motion-safe">
-                <Character speed={0.01} />
-              </mesh>
-            </group>
           </Canvas>
           <p className="text-lg mt-4" style={{ color: 'white' }}>
             Loading Brady's Portfolio...
@@ -161,17 +187,19 @@ function LoadingPage() {
             <div className="h-2 bg-pink-400 rounded-full" style={{ width: `${progress * 100}%` }}></div>
           </div>
           <div className="text-white mt-2">{Math.round(progress * 100)}%</div>
-        </div>
-      ) : (
-        <div className="w-full h-full" style={{ position: 'absolute' }}>
-          <Canvas className="w-full h-full">
-            <ambientLight />
-            <pointLight position={[10, 10, 10]} />
-          </Canvas>
+          {progress >= 1 && !transitionStarted && (
+            <button
+              onClick={handleTransitionStart}
+              className="transition-button bg-pink-400 rounded-lg px-4 py-2 mt-2 text-white shadow-lg hover:bg-pink-500"
+              style={{ position: 'absolute', bottom: '4rem', left: '50%', transform: 'translateX(-50%)' }}
+            >
+              Start Transition
+            </button>
+          )}
         </div>
       )}
     </div>
-  );
+  );                
 }
 
 export default LoadingPage;

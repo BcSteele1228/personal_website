@@ -17,12 +17,12 @@ function App() {
     setIsTransitioning(false);
   };
 
-  useEffect(() => {
-    // Simulate loading time
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 6500);
-  }, []);
+  // useEffect(() => {
+  //   // Simulate loading time
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 6500);
+  // }, []);
 
   return (
     <>
