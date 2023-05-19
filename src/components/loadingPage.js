@@ -1,9 +1,40 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import * as THREE from 'three';
-import characterImage from '../assets/character.png';
+import { TextureLoader } from 'three';
+
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
+
+import characterImage from '../assets/astronaut.png';
+
+function Character({ position, speed }) {
+  const [upward, setUpward] = useState(true);
+
+  useFrame(() => {
+    // Move the character up and down
+    if (upward) {
+      position.y += speed;
+      if (position.y > 1) {
+        setUpward(false);
+      }
+    } else {
+      position.y -= speed;
+      if (position.y < -1) {
+        setUpward(true);
+      }
+    }
+  });
+
+  const texture = useLoader(TextureLoader, characterImage);
+
+  return (
+    <mesh position={position}>
+      <planeBufferGeometry args={[9, 9]} />
+      <meshBasicMaterial map={texture} transparent />
+    </mesh>
+  );
+}
 
 function LoadingPage() {
   const [loading, setLoading] = useState(true);
@@ -108,8 +139,14 @@ function LoadingPage() {
       <div className="relative z-10" style={{ display: particlesLoaded ? 'flex' : 'none' }}>
         {loading ? (
           <div className="flex flex-col justify-center items-center w-full h-full">
-            <img src={characterImage} alt="Character" className="h-64 animate-bounce" />
-            <p className="text-lg mt-4" style={{ color: "white" }}>Loading Brady's Portfolio...</p>
+            <Canvas className="w-full h-full">
+              <ambientLight />
+              <pointLight position={[10, 10, 10]} />
+              <Character position={[0, 0, 0]} speed={0.02} />
+            </Canvas>
+            <p className="text-lg mt-4" style={{ color: 'white' }}>
+              Loading Brady's Portfolio...
+            </p>
             <div className="w-1/2 h-2 bg-gray-200 mt-4 rounded-full">
               <div className="h-2 bg-pink-400 rounded-full" style={{ width: `${progress * 100}%` }}></div>
             </div>
@@ -117,19 +154,11 @@ function LoadingPage() {
           </div>
         ) : (
           <Canvas className="w-full h-full">
-            <ambientLight />
-            <pointLight position={[10, 10, 10]} />
-            <mesh position={[0, 0, 0]}>
-              <sphereBufferGeometry args={[1, 32, 32]} />
-              <meshStandardMaterial color="hotpink" />
-            </mesh>
           </Canvas>
         )}
       </div>
     </div>
   );
-  
-  
 }
 
 export default LoadingPage;

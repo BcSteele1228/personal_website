@@ -15,7 +15,9 @@ const Earth = () => {
       textureDay.current = dayTexture;
       setTextureLoaded(true);
     });
+  }, []);
 
+  useEffect(() => {
     return () => {
       // Clean up textures
       if (textureDay.current) textureDay.current.dispose();
