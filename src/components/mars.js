@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { TextureLoader, Mesh, Color, Vector3 } from 'three';
 import jupiterTexture from '../assets/mars.jpeg';
+import { Html } from '@react-three/drei';
 
 const Mars = () => {
     const meshRef = useRef();
@@ -37,6 +38,13 @@ const Mars = () => {
             <meshBasicMaterial map={textureDay.current} />
           </mesh>
         )}
+        {textureLoaded && (
+        <Html position={[-1, 0, 0]}>
+          <div className="text-3xl text-white bg-black px-2 py-1 rounded cursor-pointer">
+            <a href="<PlaceHolder>">Experience</a>
+          </div>
+        </Html>
+      )}
       </group>
     );
   };

@@ -20,6 +20,7 @@ const Space = () => {
     const handlePreviousPlanet = () => {
         setCurrentPlanet((prevPlanet) => (prevPlanet === 0 ? planets.length - 1 : prevPlanet - 1));
     };
+    
   return (
     <div className="space">
       <Particles
@@ -113,7 +114,7 @@ const Space = () => {
         <pointLight position={[10, 10, 10]} />
         {planets.map((Planet, index) => (
           <group key={index} visible={index === currentPlanet}>
-            <Planet />
+            {index === currentPlanet && <Planet />}
           </group>
         ))}
       </Canvas>

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { TextureLoader, Mesh, Color, Vector3 } from 'three';
+import { Html } from '@react-three/drei';
 import earthTexture from '../assets/earth.jpeg';
 
 const Earth = () => {
@@ -36,6 +37,13 @@ const Earth = () => {
           <sphereGeometry args={[1, 32, 32]} />
           <meshBasicMaterial map={textureDay.current} />
         </mesh>
+      )}
+      {textureLoaded && (
+        <Html position={[-1, 0, 0]}>
+          <div className="text-3xl text-white bg-black px-2 py-1 rounded cursor-pointer">
+            <a href="<PlaceHolder>">About Me</a>
+          </div>
+        </Html>
       )}
     </group>
   );
