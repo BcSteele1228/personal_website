@@ -5,10 +5,10 @@ import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 import Transition from './transition';
 import './loadingPage.css';
+import characterImage from '../assets/rocket.png';
+import astronautImage from '../assets/astronaut.png';
 
-import characterImage from '../assets/astronaut.png';
-
-function Character({ speed }) {
+function Character({ speed, characterLoaded, loadingComplete }) {
   const meshRef = useRef();
   const [upward, setUpward] = useState(true);
   const [position, setPosition] = useState(0);
@@ -32,11 +32,14 @@ function Character({ speed }) {
     }
   });
 
-  const texture = useLoader(TextureLoader, characterImage);
+  const texture = useLoader(
+    TextureLoader,
+    loadingComplete ? characterImage : astronautImage
+  );
 
-  const aspectRatio = texture.image.width / texture.image.height;
+  const fixedAspectRatio = 1; // Set a fixed aspect ratio for consistent sizing
   const planeSize = 5;
-  const planeHeight = planeSize / aspectRatio;
+  const planeHeight = planeSize / fixedAspectRatio;
 
   return (
     <group>
@@ -53,6 +56,7 @@ function LoadingPage({ onComplete }) {
   const [progress, setProgress] = useState(0);
   const [particlesLoaded, setParticlesLoaded] = useState(false);
   const [transitionStarted, setTransitionStarted] = useState(false);
+  const [characterLoaded, setCharacterLoaded] = useState(false);
 
   useEffect(() => {
     let interval;
@@ -74,6 +78,20 @@ function LoadingPage({ onComplete }) {
       clearInterval(interval);
     };
   }, []);
+
+  useEffect(() => {
+    const textureLoader = new TextureLoader();
+  
+    const onLoad = () => {
+      setCharacterLoaded(true);
+    };
+  
+    textureLoader.load(astronautImage, onLoad);
+  
+    return () => {
+      // Clean up any resources if needed
+    };
+  }, []);  
 
   const particlesInit = useCallback(async (engine) => {
     await loadFull(engine);
@@ -168,9 +186,7 @@ function LoadingPage({ onComplete }) {
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
           <group>
-            <mesh className={`animate-float motion-safe ${loading ? 'hidden' : ''}`}>
-              <Character speed={0.01} />
-            </mesh>
+          <Character speed={0.01} characterLoaded={characterLoaded} loadingComplete={!loading} />
           </group>
         </Canvas>
       </div>
@@ -199,7 +215,7 @@ function LoadingPage({ onComplete }) {
         </div>
       )}
     </div>
-  );                
+  );
 }
 
 export default LoadingPage;
