@@ -108,9 +108,6 @@ const Space = () => {
           }}
         />
       </div>
-      <div className="words">
-        <img src={cockpitImage} alt="Cockpit" style={{ objectFit: 'cover', height: '100%', width: '100%' }} />
-      </div>
       <Canvas style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}>
         <OrbitControls enablePan={false} enableZoom={false} enableRotate={false} />
         <ambientLight />

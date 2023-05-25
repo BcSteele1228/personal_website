@@ -17,7 +17,6 @@ const Jupiter = () => {
     });
 
     return () => {
-      // Clean up textures
       if (textureDay.current) textureDay.current.dispose();
     };
   }, []);

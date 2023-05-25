@@ -1,49 +1,49 @@
-import React, { useRef, useEffect } from 'react';
-import { Canvas, useThree, useFrame } from '@react-three/fiber';
-import Cube from './cube';
+// import React, { useRef, useEffect } from 'react';
+// import { Canvas, useThree, useFrame } from '@react-three/fiber';
+// import Cube from './cube';
 
-function ThreeScene() {
-  return (
-    <Canvas>
-      <Scene />
-    </Canvas>
-  );
-}
+// function ThreeScene() {
+//   return (
+//     <Canvas>
+//       <Scene />
+//     </Canvas>
+//   );
+// }
 
-function Scene() {
-  const { gl, camera } = useThree();
+// function Scene() {
+//   const { gl, camera } = useThree();
 
-  const cubeRef = useRef();
+//   const cubeRef = useRef();
 
-  useFrame(() => {
-    if (cubeRef.current) {
-      cubeRef.current.rotation.x += 0.01;
-      cubeRef.current.rotation.y += 0.01;
-    }
-  });
+//   useFrame(() => {
+//     if (cubeRef.current) {
+//       cubeRef.current.rotation.x += 0.01;
+//       cubeRef.current.rotation.y += 0.01;
+//     }
+//   });
 
-  useEffect(() => {
-    const renderScene = () => {
-      gl.render(<Cube ref={cubeRef} />, camera);
-    };
+//   useEffect(() => {
+//     const renderScene = () => {
+//       gl.render(<Cube ref={cubeRef} />, camera);
+//     };
 
-    renderScene();
+//     renderScene();
 
-    const resizeHandler = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      gl.setSize(window.innerWidth, window.innerHeight);
-      renderScene();
-    };
+//     const resizeHandler = () => {
+//       camera.aspect = window.innerWidth / window.innerHeight;
+//       camera.updateProjectionMatrix();
+//       gl.setSize(window.innerWidth, window.innerHeight);
+//       renderScene();
+//     };
 
-    window.addEventListener('resize', resizeHandler);
+//     window.addEventListener('resize', resizeHandler);
 
-    return () => {
-      window.removeEventListener('resize', resizeHandler);
-    };
-  }, [gl, camera]);
+//     return () => {
+//       window.removeEventListener('resize', resizeHandler);
+//     };
+//   }, [gl, camera]);
 
-  return null;
-}
+//   return null;
+// }
 
-export default ThreeScene;
+// export default ThreeScene;
