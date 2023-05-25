@@ -21,14 +21,22 @@ extend({ OrbitControls });
 const Earth = () => {
   const earthRef = useRef();
 
-  useFrame(() => {
-    const rotationSpeed = 0.002;
+  useFrame(({ clock }) => {
+    const orbitRadius = 30;
+    const orbitSpeed = 0.012;
+    const rotationSpeed = 0.003;
+
+    const angle = clock.getElapsedTime() * orbitSpeed;
+    const x = Math.cos(angle) * orbitRadius;
+    const z = Math.sin(angle) * orbitRadius;
+
+    earthRef.current.position.set(x, 0, z);
     earthRef.current.rotation.y += rotationSpeed;
   });
 
   return (
-    <mesh ref={earthRef} position={[20, 0, 0]}>
-      <sphereGeometry args={[1, 32, 32]} />
+    <mesh ref={earthRef}>
+      <sphereGeometry args={[4, 64, 64]} />
       <meshLambertMaterial map={new THREE.TextureLoader().load(earthTexture)} />
     </mesh>
   );
@@ -37,14 +45,22 @@ const Earth = () => {
 const Jupiter = () => {
   const jupiterRef = useRef();
 
-  useFrame(() => {
-    const rotationSpeed = 0.001;
+  useFrame(({ clock }) => {
+    const orbitRadius = 45;
+    const orbitSpeed = 0.01;
+    const rotationSpeed = 0.0015;
+
+    const angle = clock.getElapsedTime() * orbitSpeed;
+    const x = Math.cos(angle) * orbitRadius;
+    const z = Math.sin(angle) * orbitRadius;
+
+    jupiterRef.current.position.set(x, 0, z);
     jupiterRef.current.rotation.y += rotationSpeed;
   });
 
   return (
-    <mesh ref={jupiterRef} position={[40, 0, 0]}>
-      <sphereGeometry args={[2.5, 32, 32]} />
+    <mesh ref={jupiterRef}>
+      <sphereGeometry args={[5, 64, 64]} />
       <meshLambertMaterial map={new THREE.TextureLoader().load(jupiterTexture)} />
     </mesh>
   );
@@ -53,14 +69,22 @@ const Jupiter = () => {
 const Mars = () => {
   const marsRef = useRef();
 
-  useFrame(() => {
-    const rotationSpeed = 0.0025;
+  useFrame(({ clock }) => {
+    const orbitRadius = 55;
+    const orbitSpeed = 0.017;
+    const rotationSpeed = 0.003;
+
+    const angle = clock.getElapsedTime() * orbitSpeed;
+    const x = Math.cos(angle) * orbitRadius;
+    const z = Math.sin(angle) * orbitRadius;
+
+    marsRef.current.position.set(x, 0, z);
     marsRef.current.rotation.y += rotationSpeed;
   });
 
   return (
-    <mesh ref={marsRef} position={[60, 0, 0]}>
-      <sphereGeometry args={[1.2, 32, 32]} />
+    <mesh ref={marsRef}>
+      <sphereGeometry args={[3, 32, 32]} />
       <meshLambertMaterial map={new THREE.TextureLoader().load(marsTexture)} />
     </mesh>
   );
@@ -69,46 +93,70 @@ const Mars = () => {
 const Mercury = () => {
   const mercuryRef = useRef();
 
-  useFrame(() => {
-    const rotationSpeed = 0.003;
+  useFrame(({ clock }) => {
+    const orbitRadius = 20;
+    const orbitSpeed = 0.02;
+    const rotationSpeed = 0.004;
+
+    const angle = clock.getElapsedTime() * orbitSpeed;
+    const x = Math.cos(angle) * orbitRadius;
+    const z = Math.sin(angle) * orbitRadius;
+
+    mercuryRef.current.position.set(x, 0, z);
     mercuryRef.current.rotation.y += rotationSpeed;
   });
 
   return (
-    <mesh ref={mercuryRef} position={[80, 0, 0]}>
-      <sphereGeometry args={[0.5, 32, 32]} />
+    <mesh ref={mercuryRef}>
+      <sphereGeometry args={[2, 32, 32]} />
       <meshLambertMaterial map={new THREE.TextureLoader().load(mercuryTexture)} />
     </mesh>
   );
 };
 
-const Moon = () => {
-  const moonRef = useRef();
+// const Moon = () => {
+//   const moonRef = useRef();
 
-  useFrame(() => {
-    const rotationSpeed = 0.002;
-    moonRef.current.rotation.y += rotationSpeed;
-  });
+//   useFrame(({ clock }) => {
+//     const orbitRadius = 15;
+//     const orbitSpeed = 0.02;
+//     const rotationSpeed = 0.004;
 
-  return (
-    <mesh ref={moonRef} position={[21, 0, 0]}>
-      <sphereGeometry args={[0.3, 32, 32]} />
-      <meshLambertMaterial map={new THREE.TextureLoader().load(moonTexture)} />
-    </mesh>
-  );
-};
+//     const angle = clock.getElapsedTime() * orbitSpeed;
+//     const x = Math.cos(angle) * orbitRadius;
+//     const z = Math.sin(angle) * orbitRadius;
+
+//     moonRef.current.position.set(x, 0, z);
+//     moonRef.current.rotation.y += rotationSpeed;
+//   });
+
+//   return (
+//     <mesh ref={moonRef}>
+//       <sphereGeometry args={[1, 32, 32]} />
+//       <meshLambertMaterial map={new THREE.TextureLoader().load(moonTexture)} />
+//     </mesh>
+//   );
+// };
 
 const Neptune = () => {
   const neptuneRef = useRef();
 
-  useFrame(() => {
-    const rotationSpeed = 0.0007;
+  useFrame(({ clock }) => {
+    const orbitRadius = 85;
+    const orbitSpeed = 0.005;
+    const rotationSpeed = 0.0008;
+
+    const angle = clock.getElapsedTime() * orbitSpeed;
+    const x = Math.cos(angle) * orbitRadius;
+    const z = Math.sin(angle) * orbitRadius;
+
+    neptuneRef.current.position.set(x, 0, z);
     neptuneRef.current.rotation.y += rotationSpeed;
   });
 
   return (
-    <mesh ref={neptuneRef} position={[100, 0, 0]}>
-      <sphereGeometry args={[2.7, 32, 32]} />
+    <mesh ref={neptuneRef}>
+      <sphereGeometry args={[4.5, 64, 64]} />
       <meshLambertMaterial map={new THREE.TextureLoader().load(neptuneTexture)} />
     </mesh>
   );
@@ -117,17 +165,25 @@ const Neptune = () => {
 const Saturn = () => {
   const saturnRef = useRef();
 
-  useFrame(() => {
-    const rotationSpeed = 0.0012;
+  useFrame(({ clock }) => {
+    const orbitRadius = 105;
+    const orbitSpeed = 0.008;
+    const rotationSpeed = 0.001;
+
+    const angle = clock.getElapsedTime() * orbitSpeed;
+    const x = Math.cos(angle) * orbitRadius;
+    const z = Math.sin(angle) * orbitRadius;
+
+    saturnRef.current.position.set(x, 0, z);
     saturnRef.current.rotation.y += rotationSpeed;
   });
 
   return (
-    <mesh ref={saturnRef} position={[120, 0, 0]}>
-      <sphereGeometry args={[2.8, 32, 32]} />
+    <mesh ref={saturnRef}>
+      <sphereGeometry args={[5, 64, 64]} />
       <meshLambertMaterial map={new THREE.TextureLoader().load(saturnTexture)} />
       <mesh>
-        <ringGeometry args={[3.5, 4.5, 64]} />
+        <ringGeometry args={[6, 8, 64]} />
         <meshLambertMaterial
           map={new THREE.TextureLoader().load(saturnRingsTexture)}
           side={THREE.DoubleSide}
@@ -148,7 +204,7 @@ const Stars = () => {
 
   return (
     <mesh ref={starsRef}>
-      <sphereGeometry args={[100, 32, 32]} />
+      <sphereGeometry args={[200, 64, 64]} />
       <meshBasicMaterial map={new THREE.TextureLoader().load(starsTexture)} side={THREE.BackSide} />
     </mesh>
   );
@@ -163,7 +219,7 @@ const Sun = () => {
 
   return (
     <mesh ref={sunRef}>
-      <sphereGeometry args={[4, 64, 64]} />
+      <sphereGeometry args={[10, 64, 64]} />
       <meshBasicMaterial map={new THREE.TextureLoader().load(sunTexture)} />
     </mesh>
   );
@@ -172,14 +228,22 @@ const Sun = () => {
 const Uranus = () => {
   const uranusRef = useRef();
 
-  useFrame(() => {
+  useFrame(({ clock }) => {
+    const orbitRadius = 145;
+    const orbitSpeed = 0.006;
     const rotationSpeed = 0.0009;
+
+    const angle = clock.getElapsedTime() * orbitSpeed;
+    const x = Math.cos(angle) * orbitRadius;
+    const z = Math.sin(angle) * orbitRadius;
+
+    uranusRef.current.position.set(x, 0, z);
     uranusRef.current.rotation.y += rotationSpeed;
   });
 
   return (
-    <mesh ref={uranusRef} position={[140, 0, 0]}>
-      <sphereGeometry args={[2.2, 32, 32]} />
+    <mesh ref={uranusRef}>
+      <sphereGeometry args={[4, 64, 64]} />
       <meshLambertMaterial map={new THREE.TextureLoader().load(uranusTexture)} />
     </mesh>
   );
@@ -188,14 +252,22 @@ const Uranus = () => {
 const Venus = () => {
   const venusRef = useRef();
 
-  useFrame(() => {
-    const rotationSpeed = 0.0023;
+  useFrame(({ clock }) => {
+    const orbitRadius = 160;
+    const orbitSpeed = 0.016;
+    const rotationSpeed = 0.003;
+
+    const angle = clock.getElapsedTime() * orbitSpeed;
+    const x = Math.cos(angle) * orbitRadius;
+    const z = Math.sin(angle) * orbitRadius;
+
+    venusRef.current.position.set(x, 0, z);
     venusRef.current.rotation.y += rotationSpeed;
   });
 
   return (
-    <mesh ref={venusRef} position={[160, 0, 0]}>
-      <sphereGeometry args={[1.7, 32, 32]} />
+    <mesh ref={venusRef}>
+      <sphereGeometry args={[3, 64, 64]} />
       <meshLambertMaterial map={new THREE.TextureLoader().load(venusTexture)} />
     </mesh>
   );
@@ -232,7 +304,7 @@ const MapView = () => {
           <Saturn />
           <Uranus />
           <Neptune />
-          <Moon />
+          {/* <Moon /> */}
         </group>
       </Canvas>
     </div>
